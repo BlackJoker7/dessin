@@ -20,23 +20,33 @@
     var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
       ctx.moveTo(0,0);
-      ctx.lineTo(200,100);
+      ctx.lineTo(01,10);
+      ctx.lineTo(19,84);
+      ctx.lineTo(145,017);
       ctx.stroke();
 
-   $('myCanvas')
-   .mousemove(function(){
+var myMouse=false;
 
-   		coordinates = [event.offsetX, event.offsetY];
-		path.push(coordinates); // ou drawPath()
-		//if (myMouse === true) 
+   $('#myCanvas')
+   .mousemove(function(){
+      if ( myMouse === true ) {
+   	  console.log([event.offsetX, event.offsetY])
+         coordinates = [event.offsetX, event.offsetY];
+         path.push(coordinates);
+      }
+      	 // ou drawPath()
+		 
 })
    .mousedown(function(){
-   	console.log('down'); // ou path = [];
-   	myMouse = true
+   	       // ou path = [];
+   	console.log([event.offsetX, event.offsetY])
+      myMouse = true
+   
    })
    .mouseup(function(){
-   	console.log('up'); // myMouse = 'up';
-   	myMouse = false
+   	 // myMouse = 'up';
+   	
+      myMouse = false
 
    	var data= {
    		path:path
@@ -53,13 +63,26 @@ $('showPath').click(function(){
 
 	
 })
-$.ajax({
-	url: 'http://draw.api.niamor.com/paths',
-   method: 'post'
-   path: []
+// $.ajax({
+// 	url: 'http://draw.api.niamor.com/paths',
+//    method: 'post'
+//    path: [
+//    {
+//       "id":~方,
+//       "createdAt":"2017-11-07 13:59:01",
+//       "path":[
+//          [124,279],
+//          [123,280],
+//          [123,287],
+//          ...
+//       ],
+//       "strokeColor":"#000000",
+//       "lineWidth":1
+//    },
+//    ...
+// ]
 
-   
-}) //.done(function (paths){
+// }) //.done(function (paths){
 	// for(i=0;i < paths.length ; i++){
 	// monChemin.path[i]
 	// monChemin.path.length ; j++
